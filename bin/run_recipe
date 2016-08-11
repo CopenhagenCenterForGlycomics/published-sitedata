@@ -1,0 +1,11 @@
+"use strict";
+
+const fs = require('fs');
+
+const runner = require('../lib/RecipeRunner');
+const path   = require('path');
+const filename = process.argv[2];
+
+let recipe = JSON.parse(fs.readFileSync(filename));
+
+(new runner(recipe,path.dirname(filename))).pipe(process.stdout);
