@@ -7,14 +7,14 @@
     "$[?(@.glycoites_with_unambiguous_assignment && @.mcf7_tcl)].acc" : {
       "gene" : "$.(clean(@.gene_name))",
       "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
-      "sites" : ["$.(array(match(@.glycoites_with_unambiguous_assignment,'(\\\\d+)',0,'coerce'),'HexNAc'))"],
+      "sites" : ["$.(array(+match(@.glycoites_with_unambiguous_assignment,'(\\\\d+)',0),'HexNAc'))"],
       "source" : "tcl_vva_try",
       "composition" : [["1xHexNAc"]]
     },
     "$[?(@.glycoites_with_unambiguous_assignment && @.mcf7_sec)].acc" : {
       "gene" : "$.(clean(@.gene_name))",
       "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
-      "sites" : ["$.(array(match(@.glycoites_with_unambiguous_assignment,'(\\\\d+)',0,'coerce'),'HexNAc'))"],
+      "sites" : ["$.(array(+match(@.glycoites_with_unambiguous_assignment,'(\\\\d+)',0),'HexNAc'))"],
       "source" : "sec_vva_try",
       "composition" : [["1xHexNAc"]]
     },
@@ -22,8 +22,8 @@
       "gene" : "$.(clean(@.gene_name))",
       "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
       "sites" : [],
-      "peptide_start" : "$.(match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',1,'coerce'))",
-      "peptide_end" : "$.(match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',2,'coerce'))",
+      "peptide_start" : "$.(+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',1))",
+      "peptide_end" : "$.(+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',2))",
       "source" : "tcl_vva_try",
       "composition" : ["$.(paste(match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',0),'xHexNAc'))"]
     },
@@ -31,8 +31,8 @@
       "gene" : "$.(clean(@.gene_name))",
       "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
       "sites" : [],
-      "peptide_start" : "$.(match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',1,'coerce'))",
-      "peptide_end" : "$.(match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',2,'coerce'))",
+      "peptide_start" : "$.(+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',1))",
+      "peptide_end" : "$.(+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',2))",
       "source" : "sec_vva_try",
       "composition" : [["$.(paste(match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',0),'xHexNAc'))"]]
     }
