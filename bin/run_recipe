@@ -6,4 +6,4 @@ const runner = require('../lib/RecipeFolder').RecipeFolder;
 const path   = require('path');
 const filename = process.argv[2];
 
-(new runner(filename));//.ready.then((recipes) => console.log(recipes));
+(new runner(filename,{debug:0}));
