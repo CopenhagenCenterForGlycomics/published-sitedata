@@ -2,10 +2,8 @@
 
 const fs = require('fs');
 
-const runner = require('../lib/RecipeRunner');
+const runner = require('../lib/RecipeFolder').RecipeFolder;
 const path   = require('path');
 const filename = process.argv[2];
 
-let recipe = JSON.parse(fs.readFileSync(filename));
-
-(new runner(recipe,path.dirname(filename))).pipe(process.stdout);
+(new runner(filename));//.ready.then((recipes) => console.log(recipes));
