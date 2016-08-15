@@ -1,9 +1,17 @@
 "use strict";
 
 const fs = require('fs');
+const nconf = require('nconf');
+
+nconf.argv();
+
 
 const runner = require('../lib/RecipeFolder').RecipeFolder;
 const path   = require('path');
-const filename = process.argv[2];
+const parent_folder = nconf.get('input');
+const output = nconf.get('output') || 'output';
 
-(new runner(filename,{debug:0}));
+
+(new runner(parent_folder,{debug:nconf.get('debug'), output: output })).ready.catch(function(err) {
+	console.log(err,err.stack);
+});
