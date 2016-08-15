@@ -10,6 +10,4 @@ should be infrequent.
 
 ## TODO
 
-TRAVIS-CI deploy to a bucket when the build is OK
 Create cloudformation template for buckets / users
-Users - one for the travis job, one for the lambda function. Deployment of lambda function controlled elsewhere.
