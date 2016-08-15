@@ -15,6 +15,7 @@
   "metadata": {
     "title" : "Healthy Sera glycoproteome",
     "mimetype" : "application/json+msdata",
+    "doi" : "10.1074/mcp.M114.046862",
     "sample": {
         "tissue":"bto:0000131",
         "species":9606

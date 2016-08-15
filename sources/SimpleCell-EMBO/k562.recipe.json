@@ -40,6 +40,7 @@
   "metadata": {
     "title" : "K-562 glycoproteome",
     "mimetype" : "application/json+msdata/site",
+    "doi" : "10.1038/emboj.2013.79",
     "sample": {
         "cell_type_id":"RRID:CVCL_S029",
         "cell_type":"K-562 SC",

@@ -28,6 +28,7 @@
   "metadata": {
     "title" : "MDA-MB-231 O-Man glycoproteome",
     "mimetype" : "application/json+msdata",
+    "doi" : "10.1073/pnas.1313446110",
     "sample": {
         "cell_type_id":"RRID:CVCL_S032",
         "cell_type":"MDA-MB-231 SC",

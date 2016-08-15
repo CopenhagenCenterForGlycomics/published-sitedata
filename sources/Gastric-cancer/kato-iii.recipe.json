@@ -29,6 +29,7 @@
   "metadata": {
     "title" : "KATO-III glycoproteome",
     "mimetype" : "application/json+msdata",
+    "doi" : "10.1074/mcp.M114.046862",
     "sample": {
         "cell_type_id":"RRID:CVCL_0371",
         "cell_type":"KATO-III",

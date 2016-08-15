@@ -40,6 +40,7 @@
   "metadata": {
     "title" : "OVCAR-3 glycoproteome",
     "mimetype" : "application/json+msdata",
+    "doi" : "10.1038/emboj.2013.79",
     "sample": {
         "cell_type_id":"RRID:CVCL_S033",
         "cell_type":"OVCAR-3 SC",

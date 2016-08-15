@@ -40,6 +40,7 @@
   "metadata": {
     "title" : "MCF7 glycoproteome",
     "mimetype" : "application/json+msdata",
+    "doi" : "10.1038/emboj.2013.79",
     "sample": {
         "cell_type_id":"RRID:CVCL_S030",
         "cell_type":"MCF-7 SC",

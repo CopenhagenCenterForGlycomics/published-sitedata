@@ -50,6 +50,7 @@
   "metadata": {
     "title" : "AGS glycoproteome",
     "mimetype" : "application/json+msdata",
+    "doi" : "10.1074/mcp.M114.046862",
     "sample": {
         "cell_type_id":"RRID:CVCL_0139",
         "cell_type":"AGS",

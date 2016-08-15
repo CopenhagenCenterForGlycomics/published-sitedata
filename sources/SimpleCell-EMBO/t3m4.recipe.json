@@ -56,6 +56,7 @@
   "metadata": {
     "title" : "T3M-4 glycoproteome",
     "mimetype" : "application/json+msdata/site",
+    "doi" : "10.1038/emboj.2013.79",
     "sample": {
         "cell_type_id":"RRID:CVCL_4056",
         "cell_type":"T3M-4",
