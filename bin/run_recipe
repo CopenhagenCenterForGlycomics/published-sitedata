@@ -30,7 +30,6 @@ let stream_ready = function(stream) {
   });
 };
 
-
 let schema = {
   '$schema': 'http://json-schema.org/schema#',
   'id' : 'http://glycocode.com/schemas/msdata.1.json',
@@ -43,28 +42,31 @@ let schema = {
   }
 };
 
+let validate_jsons = function(validator,jsons) {
+  let all_valid = true;
+  let errors = [];
+  jsons.map(function(json) {
+    let valid = validator.validate(json,schema);
+    if ( valid.errors && valid.errors.length > 0 ) {
+      all_valid = false;
+    }
+    errors.push(valid.errors);
+  });
+  if (! all_valid ) {
+    let err = new Error(errors);
+    err.code = 'VALIDATION';
+    throw err;
+  }
+  return all_valid;
+};
+
 if (nconf.get('validate')) {
   let validator = new Validator();
-  runner.recipe_streams.then(function(streams) {
-    return Promise.all(streams.map(stream_ready)).then(function(jsons){
-      let all_valid = true;
-      let errors = [];
-      jsons.map(function(json) {
-        let valid = validator.validate(json,schema);
-        if ( valid.errors && valid.errors.length > 0 ) {
-          all_valid = false;
-        }
-        errors.push(valid.errors);
-      });
-      if (! all_valid ) {
-        let err = new Error(errors);
-        err.code = 'VALIDATION';
-        throw err;
-      }
-    });
-  }).then(function() {
-    process.exit(0);
-  }).catch(function(err) {
+  runner.recipe_streams
+  .then((streams) => Promise.all(streams.map(stream_ready)))
+  .then(validate_jsons.bind(null,validator))
+  .then(() => process.exit(0))
+  .catch(function(err) {
     if (err.code == 'VALIDATION') {
       console.log(err);
     } else {
