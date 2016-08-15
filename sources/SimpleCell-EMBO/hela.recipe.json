@@ -39,7 +39,7 @@
   },
   "metadata": {
     "title" : "HeLa glycoproteome",
-    "mimetype" : "application/json+msdata/site",
+    "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
     "sample": {
         "cell_type_id":"RRID:CVCL_S026",
