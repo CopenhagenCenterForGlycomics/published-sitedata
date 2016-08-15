@@ -1,12 +1,10 @@
-"use strict";
+'use strict';
 
-const fs = require('fs');
 const nconf = require('nconf');
 
 nconf.argv();
 
 const RecipeFolder = require('../lib/RecipeFolder').RecipeFolder;
-const path   = require('path');
 const parent_folder = nconf.get('input');
 const output = nconf.get('output') || 'output';
 const Validator = require('jsonschema').Validator;
@@ -34,13 +32,13 @@ let stream_ready = function(stream) {
 
 
 let schema = {
-  "$schema": "http://json-schema.org/schema#",
-  "id" : "http://glycocode.com/schemas/msdata.1.json",
-  "type": "object",
-  "required" : ["data"],
-  "properties": {
-    "data": {
-      "type": "object"
+  '$schema': 'http://json-schema.org/schema#',
+  'id' : 'http://glycocode.com/schemas/msdata.1.json',
+  'type': 'object',
+  'required' : ['data'],
+  'properties': {
+    'data': {
+      'type': 'object'
     }
   }
 };
@@ -62,10 +60,9 @@ if (nconf.get('validate')) {
         let err = new Error(errors);
         err.code = 'VALIDATION';
         throw err;
-        return false;
       }
     });
-  }).then(function(ok) {
+  }).then(function() {
     process.exit(0);
   }).catch(function(err) {
     if (err.code == 'VALIDATION') {
@@ -75,7 +72,7 @@ if (nconf.get('validate')) {
     }
     process.exit(1);
   });
-};
+}
 
 runner.ready.catch(function(err) {
   console.log(err,err.stack);
