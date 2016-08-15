@@ -65,6 +65,8 @@ if (nconf.get('validate')) {
   runner.recipe_streams
   .then((streams) => Promise.all(streams.map(stream_ready)))
   .then(validate_jsons.bind(null,validator))
+  .then(() => runner.written )
+  .then(() => console.log('Wrote all files'))
   .then(() => process.exit(0))
   .catch(function(err) {
     if (err.code == 'VALIDATION') {
