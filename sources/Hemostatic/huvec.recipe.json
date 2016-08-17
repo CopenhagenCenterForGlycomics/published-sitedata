@@ -10,7 +10,7 @@
       "source" : "$.(paste(@.lectin,'_',@.enzyme))",
       "peptide_start" : "$.(@.peptide_start)",
       "peptide_end" : "$.(@.peptide_end)",
-      "composition" : [["$.(@.composition)"]]
+      "composition" : ["$.(@.composition)"]
     }
   },
   "metadata": {
