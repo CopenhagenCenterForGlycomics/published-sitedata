@@ -4,7 +4,7 @@
 },
 "template": {
   "data": {
-    "$[?(@.sample_source == 'plasma')].acc" : {
+    "$[?(@.sample_source == 'platelet')].acc" : {
       "acc" : "$.(@.uniprot)",
       "sites" : ["$.(match(@.glycan_site,'(\\\\d+)\\\\(([HexNAc]+)\\\\)'))",{ "ARRAY" : true, "0": "$.(+@.value[0])", "1" : "@.value[1]" } ],
       "source" : "$.(paste(@.lectin,'_',@.enzyme))",
