@@ -9,7 +9,7 @@
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "tcl_vva_chy",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     }
   },
   "metadata": {

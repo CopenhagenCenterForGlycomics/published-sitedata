@@ -11,7 +11,7 @@
       "source" : "tcl_vva_try",
       "peptide_start" : "$.(+match(@.protein_sequence,'(\\\\d+)',0))",
       "peptide_end" : "$.(+match(@.protein_sequence,'(\\\\d+)',1))",
-      "composition" : [["$.(paste(match(@.glycan_s,'(\\\\d+)',0) || 1,'xHex'))"]]
+      "composition" : ["$.(paste(match(@.glycan_s,'(\\\\d+)',0) || 1,'xHex'))"]
     },
     "$[?(@.protein && ! @.defined_site_s && @.partially_defined_sites)].acc" : {
       "gene" : "$.(clean(@.gene_name))",
@@ -22,7 +22,7 @@
       "ambiguous_mods" : "$.(paste(match(@.partially_defined_sites,'(\\\\d+)',0),'-',match(@.partially_defined_sites,'(\\\\d+)',1),'(',match(@.glycan_s,'(\\\\d+)',0) || 1,'xHex)'))",
       "peptide_end" : "$.(+match(@.partially_defined_sites,'(\\\\d+)',1))",
       "source" : "tcl_vva_try",
-      "composition" : [["$.(paste(match(@.glycan_s,'(\\\\d+)',0) || 1,'xHex'))"]]
+      "composition" : ["$.(paste(match(@.glycan_s,'(\\\\d+)',0) || 1,'xHex'))"]
     }
   },
   "metadata": {

@@ -9,21 +9,21 @@
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "tcl_vva_try",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycosites_defined && @.kato_iii_wt_sec_try_vva_tn)].acc" : {
       "gene" : "$.(clean(@.gene))",
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "sec_vva_try",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycosites_defined && @.kato_iii_wt_tcl_try_vva_ft_pna_t)].acc" : {
       "gene" : "$.(clean(@.gene))",
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexHexNAc'))"],
       "source" : "tcl_pna_try",
-      "composition" : [["1xHexHexNAc"]]
+      "composition" : ["1xHexHexNAc"]
     }
   },
   "metadata": {

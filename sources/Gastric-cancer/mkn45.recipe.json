@@ -9,14 +9,14 @@
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "tcl_vva_try",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycosites_defined && @.mkn45_sec_try)].acc" : {
       "gene" : "$.(clean(@.gene))",
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "sec_vva_try",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     }
   },
   "metadata": {
