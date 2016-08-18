@@ -1,0 +1,29 @@
+{
+"sources" : {
+  "files" : []
+},
+"preprocess": {
+  "data": {
+    "$[*].id" : {
+      "id" : "$.(clean(@.ms_ms_i_ds))",
+      "uniprot" : "@.protein",
+      "position" : "@.position",
+      "seq" : "@.modified_sequence",
+      "ratios" : "$.(array(@.ratio_m_l_normalized,@.ratio_h_l_normalized))"
+    }
+  }
+},
+"template" : {
+  "data" : {
+    "$.data[*].uniprot" : {
+      "uniprot" : "$[0].uniprot",
+      "sites" : [ "$", { "ARRAY" : true, "0": "$.(@.position)", "1" : "ph" } ],
+      "sequence" : "$[0].(clean(@.seq,'A-Z'))",
+      "composition" : [ "$[0].(paste(match(@.seq,'ph').length,'xPh'))" ],
+      "quant" : { "ARRAY": true, "0": { "quant" : "$[0].(@.ratios[0])" }, "1": { "quant" : "$[0].(@.ratios[1])" } }
+    }
+  }
+},
+"environment" : {
+}
+}
