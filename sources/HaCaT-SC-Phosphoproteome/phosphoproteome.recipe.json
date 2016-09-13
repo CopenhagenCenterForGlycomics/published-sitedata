@@ -18,10 +18,10 @@
   "data" : {
     "$.data[*].uniprot" : {
       "uniprot" : "$[0].uniprot",
-      "sites" : [ "$", { "ARRAY" : true, "0": "$.(@.position)", "1" : "ph" } ],
+      "sites" : [ "$", { "ARRAY" : true, "0": "$.(@.position)", "1" : "Phospho" } ],
       "peptide_start" : "$[0].peptide_start",
       "peptide_end" : "$[0].(@.peptide_start + clean(@.seq,'A-Z').length - 1)",
-      "composition" : [ "$[0].(paste(match(@.seq,'ph').length,'xPh'))" ],
+      "composition" : [ "$[0].(paste(match(@.seq,'ph').length,'xPhospho'))" ],
       "quant" : { "ARRAY": true, "0": { "quant" : "$[0].(@.ratios[0])", "channels" : "M:L" }, "1": { "quant" : "$[0].(@.ratios[1])", "channels" : "H:L" } }
     }
   },
