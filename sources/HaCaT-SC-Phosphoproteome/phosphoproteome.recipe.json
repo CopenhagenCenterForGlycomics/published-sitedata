@@ -1,0 +1,50 @@
+{
+"sources" : {
+  "files" : [ "ratios.xls:1" ]
+},
+"preprocess": {
+  "data": {
+    "$[*].id" : {
+      "id" : "$.(clean(@.ms_ms_i_ds))",
+      "uniprot" : "@.protein",
+      "position" : "@.position",
+      "peptide_start" : "$.(@.position - @.position_in_peptide + 1)",
+      "seq" : "@.modified_sequence",
+      "ratios" : "$.(array(@.ratio_m_l_normalized,@.ratio_h_l_normalized))"
+    }
+  }
+},
+"template" : {
+  "data" : {
+    "$.data[*].uniprot" : {
+      "uniprot" : "$[0].uniprot",
+      "sites" : [ "$", { "ARRAY" : true, "0": "$.(@.position)", "1" : "Phospho" } ],
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].(@.peptide_start + clean(@.seq,'A-Z').length - 1)",
+      "composition" : [ "$[0].(paste(match(@.seq,'ph').length,'xPhospho'))" ],
+      "quant" : { "ARRAY": true, "0": { "quant" : "$[0].(@.ratios[0])", "channels" : "M:L" }, "1": { "quant" : "$[0].(@.ratios[1])", "channels" : "H:L" } }
+    }
+  },
+  "metadata": {
+    "title" : "HaCaT SC Phosphoproteome",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1073/pnas.1406619111",
+    "quantitation" : {
+      "channels" : {
+        "M" : "ko",
+        "H" : "ko",
+        "L" : "wt"
+      }
+    },
+    "sample": {
+        "cell_type_id":"RRID:CVCL_0038",
+        "cell_type":"HaCaT",
+        "ko":["entrez:29071"],
+        "tissue":"bto:0000552",
+        "species":9606
+    }
+  }
+},
+"environment" : {
+}
+}
