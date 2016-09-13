@@ -37,8 +37,8 @@
       }
     },
     "sample": {
-        "cell_type_id":"RRID:CVCL_S024",
-        "cell_type":"HaCaT SC",
+        "cell_type_id":"RRID:CVCL_0038",
+        "cell_type":"HaCaT",
         "ko":["entrez:29071"],
         "tissue":"bto:0000552",
         "species":9606
