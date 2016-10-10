@@ -38,6 +38,7 @@
     }
   },
   "metadata": {
+    "msdata-version" : "1.2",
     "title" : "HaCaT Glycoproteome",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
