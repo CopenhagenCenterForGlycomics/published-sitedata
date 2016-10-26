@@ -26,7 +26,7 @@
       "sites" : [],
       "peptide_start" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',0))",
       "peptide_end" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',1))",
-      "source" : "tcl_vva_try",
+      "source" : "tcl_vva_chy",
       "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycoites_with_unambiguous_assignment && @.capan1_tcl_chy_tr)].acc" : {
@@ -42,7 +42,7 @@
       "sites" : [],
       "peptide_start" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',0))",
       "peptide_end" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',1))",
-      "source" : "tcl_vva_try",
+      "source" : "sec_vva_try",
       "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycoites_with_unambiguous_assignment && @.capan1_sec)].acc" : {
