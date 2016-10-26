@@ -1,13 +1,31 @@
 {
 "sources" : {
-  "files" : ["emboj201379s2.xls:3","emboj201379s2.xls:4"]
+  "files" : ["emboj201379s2.xls:1","emboj201379s2.xls:3","emboj201379s2.xls:4"]
 },
 "template": {
   "data": {
+    "$[?(@.glycopeptides_sequence && @.hek293_tcl)].acc" : {
+      "gene" : "$.(clean(@.gene_name))",
+      "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
+      "sites" : [],
+      "peptide_start" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',0))",
+      "peptide_end" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',1))",
+      "source" : "tcl_vva_try",
+      "composition" : ["1xHexNAc"]
+    },
     "$[?(@.glycoites_with_unambiguous_assignment && @.hek293_tcl)].acc" : {
       "gene" : "$.(clean(@.gene_name))",
       "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
       "sites" : ["$.(array(+match(@.glycoites_with_unambiguous_assignment,'(\\\\d+)',0),'HexNAc'))"],
+      "source" : "tcl_vva_try",
+      "composition" : ["1xHexNAc"]
+    },
+    "$[?(@.glycopeptides_sequence && @.hek293_tcl_chy_tr)].acc" : {
+      "gene" : "$.(clean(@.gene_name))",
+      "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
+      "sites" : [],
+      "peptide_start" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',0))",
+      "peptide_end" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',1))",
       "source" : "tcl_vva_try",
       "composition" : ["1xHexNAc"]
     },
@@ -16,6 +34,15 @@
       "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
       "sites" : ["$.(array(+match(@.glycoites_with_unambiguous_assignment,'(\\\\d+)',0),'HexNAc'))"],
       "source" : "tcl_vva_chy",
+      "composition" : ["1xHexNAc"]
+    },
+    "$[?(@.glycopeptides_sequence && @.hek293_sec)].acc" : {
+      "gene" : "$.(clean(@.gene_name))",
+      "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
+      "sites" : [],
+      "peptide_start" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',0))",
+      "peptide_end" : "$.(+match(@.glycopeptides_sequence,'(\\\\d+)',1))",
+      "source" : "tcl_vva_try",
       "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycoites_with_unambiguous_assignment && @.hek293_sec)].acc" : {
