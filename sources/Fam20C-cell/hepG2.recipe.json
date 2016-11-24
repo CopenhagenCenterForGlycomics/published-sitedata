@@ -1,0 +1,20 @@
+
+{
+"sources" : {
+  "files" : ["mmc3.xls:7"]
+},
+"template": {
+    "data":{
+        "$[?(@)].acc" : {
+            "acc" : "$.(@.leading_proteins)",
+            "sites" : ["$.(array(+match(@.positions_within_proteins,'(\\\\d+)',0),'Phospho'))"],
+            "sequence" : "$.(clean(@.phospho_sty_probabilities,'A-Z'))",
+            "source" : "",
+            "composition" : ["1xPhospho"],
+            "quant" : { "ARRAY": true, "0": { "Control" : "$.(@.intensity_ctrl)" , "Knockdown" : "$.(@.intensity_kd)" , "quant" : "$.(@.intensity_kd/@.intensity_ctrl)"}}
+    }
+
+    }
+}
+
+}
