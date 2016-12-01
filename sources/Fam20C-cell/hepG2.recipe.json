@@ -8,19 +8,44 @@
 	"$.data[?(@.uniprot && +@.quant)].uniprot" : {
 		"uniprot" : "$.uniprot",
 		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
-		"quant" : "$.(Math.pow(2,@.quant))"
+		"quant" : { "quant": "$.(Math.pow(2,@.quant))" , "channels" : "K:C" }
 	},
 	"$.data[?(@.uniprot && @.quant == 'neg ∞')].uniprot" : {
 		"uniprot" : "$.uniprot",
 		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
-		"quant" : "$.(0.000001)"
+		"quant" : { "quant": "$.(0.000001)" , "channels" : "K:C" }
 	},
+	"$.data[?(@.uniprot && @.quant == 'pos ∞')].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : { "quant": "$.(100000)" , "channels" : "K:C" }
+    },
 	"$.data[?(@.uniprot && @.quant == 'not found')].uniprot" : {
 		"uniprot" : "$.uniprot",
 		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
 		"quant" : "$.(null)"
 	}
-}
 },
+  "metadata": {
+    "msdata-version" : "1.2",
+    "title" : "Fam20c Phosphoproteome",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1016/j.cell.2015.05.028",
+    "quantitation" : {
+      "channels" : {
+        "K" : "Kd",
+        "C" : "Ctrl"
+      }
+    },
+    "sample": {
+        "cell_type_id":"RRID:CVCL_0027",
+        "cell_type":"HepG2",
+        "Kd":["entrez:56975"],
+        "tissue":"bto:0000599",
+        "species":9606
+    }
+  }
+},
+
 "environment" : {}
 }
