@@ -13,7 +13,7 @@
 	"$.data[?(@.uniprot && @.quant == 'neg ∞')].uniprot" : {
 		"uniprot" : "$.uniprot",
 		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
-		"quant" : "$.(-50000)"
+		"quant" : "$.(0.000001)"
 	},
 	"$.data[?(@.uniprot && @.quant == 'not found')].uniprot" : {
 		"uniprot" : "$.uniprot",

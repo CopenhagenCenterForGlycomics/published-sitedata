@@ -1,20 +1,26 @@
 
 {
 "sources" : {
-  "files" : ["mmc3.xls:14"]
+  "files" : ["mmc3.xls:9"]
 },
-"template": {
-    "data":{
-        "$[?(@)].acc" : {
-            "acc" : "$.(@.leading_proteins)",
-            "sites" : ["$.(array(+match(@.positions_within_proteins,'(\\\\d+)',0),'Phospho'))"],
-            "sequence" : "$.(clean(@.phospho_sty_probabilities,'A-Z'))",
-            "source" : "",
-            "composition" : ["1xPhospho"],
-            "quant" : { "ARRAY": true, "0": { "Control" : "$.(@.intensity_ctrl)" , "Knockdown" : "$.(@.intensity_kd)" , "quant" : "$.(@.intensity_kd/@.intensity_ctrl)"}}
-    }
-
+"preprocess": { "data" : [ "$[?(@.phosphorylation_site_s)]" , { "uniprot" : "$.(lastvalue(@.uniprot_id))", "site" : "$.phosphorylation_site_s", "quant" : "$.(@.log2_kd_ctrl)" } ] },
+"template": { "data" : {
+    "$.data[?(@.uniprot && +@.quant)].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : "$.(Math.pow(2,@.quant))"
+    },
+    "$.data[?(@.uniprot && @.quant == 'neg ∞')].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : "$.(0.000001)"
+    },
+    "$.data[?(@.uniprot && @.quant == 'not found')].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : "$.(null)"
     }
 }
-
+},
+"environment" : {}
 }
