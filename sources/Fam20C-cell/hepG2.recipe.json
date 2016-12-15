@@ -7,12 +7,12 @@
 "template": { "data" : {
 	"$.data[?(@.uniprot && +@.quant)].uniprot" : {
 		"uniprot" : "$.uniprot",
-		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+		"sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
 		"quant" : { "quant": "$.(Math.pow(2,@.quant))" , "channels" : "K:C" }
 	},
 	"$.data[?(@.uniprot && @.quant == 'neg ∞')].uniprot" : {
 		"uniprot" : "$.uniprot",
-		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+		"sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
 		"quant" : { "quant": "$.(0.000001)" , "channels" : "K:C" }
 	},
 	"$.data[?(@.uniprot && @.quant == 'pos ∞')].uniprot" : {
@@ -22,12 +22,12 @@
     },
 	"$.data[?(@.uniprot && @.quant == 'not found')].uniprot" : {
 		"uniprot" : "$.uniprot",
-		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+		"sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
 		"quant" : "$.(null)"
 	}
 },
   "metadata": {
-    "msdata-version" : "1.2",
+    "msdata-version" : "1.3",
     "title" : "Fam20c Phosphoproteome",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1016/j.cell.2015.05.028",
