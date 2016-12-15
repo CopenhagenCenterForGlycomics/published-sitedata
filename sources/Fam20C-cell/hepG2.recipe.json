@@ -1,20 +1,51 @@
 
 {
 "sources" : {
-  "files" : ["mmc3.xls:7"]
+  "files" : ["mmc3.xls:2"]
 },
-"template": {
-    "data":{
-        "$[?(@)].acc" : {
-            "acc" : "$.(@.leading_proteins)",
-            "sites" : ["$.(array(+match(@.positions_within_proteins,'(\\\\d+)',0),'Phospho'))"],
-            "sequence" : "$.(clean(@.phospho_sty_probabilities,'A-Z'))",
-            "source" : "",
-            "composition" : ["1xPhospho"],
-            "quant" : { "ARRAY": true, "0": { "Control" : "$.(@.intensity_ctrl)" , "Knockdown" : "$.(@.intensity_kd)" , "quant" : "$.(@.intensity_kd/@.intensity_ctrl)"}}
+"preprocess": { "data" : [ "$[?(@.phosphorylation_site_s)]" , { "uniprot" : "$.(lastvalue(@.uniprot_id))", "site" : "$.phosphorylation_site_s", "quant" : "$.(@.log2_ko_wt)" } ] },
+"template": { "data" : {
+	"$.data[?(@.uniprot && +@.quant)].uniprot" : {
+		"uniprot" : "$.uniprot",
+		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+		"quant" : { "quant": "$.(Math.pow(2,@.quant))" , "channels" : "K:C" }
+	},
+	"$.data[?(@.uniprot && @.quant == 'neg ∞')].uniprot" : {
+		"uniprot" : "$.uniprot",
+		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+		"quant" : { "quant": "$.(0.000001)" , "channels" : "K:C" }
+	},
+	"$.data[?(@.uniprot && @.quant == 'pos ∞')].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : { "quant": "$.(100000)" , "channels" : "K:C" }
+    },
+	"$.data[?(@.uniprot && @.quant == 'not found')].uniprot" : {
+		"uniprot" : "$.uniprot",
+		"site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+		"quant" : "$.(null)"
+	}
+},
+  "metadata": {
+    "msdata-version" : "1.2",
+    "title" : "Fam20c Phosphoproteome",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1016/j.cell.2015.05.028",
+    "quantitation" : {
+      "channels" : {
+        "K" : "Kd",
+        "C" : "Ctrl"
+      }
+    },
+    "sample": {
+        "cell_type_id":"RRID:CVCL_0027",
+        "cell_type":"HepG2",
+        "Kd":["entrez:56975"],
+        "tissue":"bto:0000599",
+        "species":9606
     }
+  }
+},
 
-    }
-}
-
+"environment" : {}
 }
