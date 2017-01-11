@@ -1,0 +1,51 @@
+
+{
+"sources" : {
+  "files" : ["mmc3.xls:9"]
+},
+"preprocess": { "data" : [ "$[?(@.phosphorylation_site_s)]" , { "uniprot" : "$.(lastvalue(@.uniprot_id))", "site" : "$.phosphorylation_site_s", "quant" : "$.(@.log2_kd_ctrl)" } ] },
+"template": { "data" : {
+    "$.data[?(@.uniprot && +@.quant)].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : { "quant": "$.(Math.pow(2,@.quant))" , "channels" : "K:C" }
+    },
+    "$.data[?(@.uniprot && @.quant == 'neg ∞')].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : { "quant": "$.(0.000001)" , "channels" : "K:C" }
+    },
+    "$.data[?(@.uniprot && @.quant == 'pos ∞')].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : { "quant": "$.(100000)" , "channels" : "K:C" }
+    },
+    "$.data[?(@.uniprot && @.quant == 'not found')].uniprot" : {
+        "uniprot" : "$.uniprot",
+        "sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+        "quant" : "$.(null)"
+    }
+},
+  "metadata": {
+    "msdata-version" : "1.3",
+    "title" : "Fam20c Phosphoproteome",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1016/j.cell.2015.05.028",
+    "quantitation" : {
+      "channels" : {
+        "K" : "Kd",
+        "C" : "Ctrl"
+      }
+    },
+    "sample": {
+        "cell_type_id":"RRID:CVCL_0062",
+        "cell_type":"MDA-MB-231",
+        "Kd":["entrez:56975"],
+        "tissue":"bto:0000815",
+        "species":9606
+    }
+  }
+},
+
+"environment" : {}
+}
