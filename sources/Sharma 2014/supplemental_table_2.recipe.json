@@ -1,0 +1,36 @@
+{
+"sources" : {
+  "files" : [ "mmc3.xlsx:0" ]
+},
+"preprocess": {
+  "data": {
+    "$[*].id" : {
+      "id" : "$.uniprot_id",
+      "position" : "@.position"
+    }
+  }
+},
+"template" : {
+  "data" : {
+    "$.data[*].uniprot" : {
+      "uniprot" : "$[0].id",
+      "sites" : [ "$", { "ARRAY" : true, "0": "$.(@.position)", "1" : "Phospho" } ]
+    }
+  },
+  "metadata": {
+    "msdata-version" : "1.2",
+    "title" : "Ultradeep human phosphoproteome",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1016/j.celrep.2014.07.036",
+    "sample": {
+        "cell_type_id":"RRID:CVCL_0058",
+        "cell_type":"HeLa S3",
+        "ko":[],
+        "tissue":"bto:0000568 ",
+        "species":9606
+    }
+  }
+},
+"environment" : {
+}
+}
