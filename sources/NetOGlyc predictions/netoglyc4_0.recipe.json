@@ -1,0 +1,26 @@
+{
+"sources" : {
+  "files" : ["predictions4_0.tsv"]
+},
+"template": {
+  "data": {
+    "$[*].uniprot" : {
+      "uniprot" : "$.uniprot",
+      "sites" : [ "$.(match(@.sites, '(\\\\d+)'))", {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "HexNAc" }]
+    }
+  },
+  "metadata": {
+    "msdata-version" : "1.2",
+    "title" : "NetOGlyc 4.0 predictions",
+    "mimetype" : "application/json+msdata-prediction",
+    "doi" : "10.1038/emboj.2013.79",
+    "sample": {
+        "species":9606
+    }
+  }
+},
+"environment" : {
+  "protein_names" : {
+  }
+}
+}
