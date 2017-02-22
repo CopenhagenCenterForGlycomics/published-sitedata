@@ -1,0 +1,27 @@
+{
+"sources" : {
+  "files" : ["Supp Table 2-5 v3.xlsx:4"]
+},
+"template": {
+  "data": {
+    "$[?(@.sample_source == 'plasma')].acc" : {
+      "acc" : "$.(@.uniprot)",
+      "sites" : ["$.(match(@.glycan_site,'(\\\\d+)\\\\(([^\\\\d]+)\\\\)'))",{ "ARRAY" : true, "0": "$.(+@.value[0])", "1" : "@.value[1]" } ],
+      "source" : "$.(paste(@.lectin,'_',@.enzyme))",
+      "peptide_start" : "$.(@.peptide_start)",
+      "peptide_end" : "$.(@.peptide_end)",
+      "composition" : ["$.(@.composition)"]
+    }
+  },
+  "metadata": {
+    "title" : "Hemostatic plasma glycoproteome",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1182/bloodadvances.2016002121",
+    "sample": {
+        "tissue" : "plasma",
+        "species":9606
+    }
+  }
+},
+"environment" : {}
+}
