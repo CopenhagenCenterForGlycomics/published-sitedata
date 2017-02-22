@@ -16,8 +16,9 @@
   "metadata": {
     "title" : "Hemostatic plasma glycoproteome",
     "mimetype" : "application/json+msdata",
-    "doi" : "hemostatic",
+    "doi" : "10.1182/bloodadvances.2016002121",
     "sample": {
+        "tissue" : "plasma",
         "species":9606
     }
   }
