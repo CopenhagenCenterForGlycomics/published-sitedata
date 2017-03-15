@@ -14,10 +14,11 @@
     }
   },
   "metadata": {
-    "title" : "HUVEC plasma glycoproteome",
+    "title" : "HUVEC glycoproteome",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1182/bloodadvances.2016002121",
     "sample": {
+        "tissue" : "bto:0001949",
         "species":9606
     }
   }
