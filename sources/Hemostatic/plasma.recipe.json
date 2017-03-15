@@ -18,7 +18,7 @@
     "mimetype" : "application/json+msdata",
     "doi" : "10.1182/bloodadvances.2016002121",
     "sample": {
-        "tissue" : "plasma",
+        "tissue" : "bto:0000131",
         "species":9606
     }
   }
