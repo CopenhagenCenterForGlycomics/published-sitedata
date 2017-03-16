@@ -8,7 +8,7 @@
     "validate": "npm ls",
     "test:pullrequest": "filenames=$((for dir in `git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)`; do dirname $dir; done) | sort -u | paste -s -d, -); npm test -- --input $filenames",
     "test:full": "node bin/run_recipe --silent",
-    "test": "node bin/run_recipe --silent --debug 10 --validate"
+    "test": "for dir in sources/*; do echo \"$dir\"; node bin/run_recipe --input \"$dir\" --debug 10 --validate --silent; done"
   },
   "author": "Hiren Joshi",
   "license": "ISC",
