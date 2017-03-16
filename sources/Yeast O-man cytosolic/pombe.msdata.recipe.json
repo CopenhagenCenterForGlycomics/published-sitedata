@@ -1,0 +1,61 @@
+{
+"sources" : {
+  "files" : ["pnas.1511743112.sd02.xlsx:0","pnas.1511743112.sd02.xlsx:1","pnas.1511743112.sd02.xlsx:2"]
+},
+"template" : {
+  "data": {
+    "$.data[?(@[0].any_sites)].acc" : {
+      "acc" : "$[0].acc",
+      "sequence" : "$[0].sequence",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].(@.peptide_end)",
+      "sites" : ["$[0].(match(@.modifications, '(:?(:?^|[ ,;]))(\\\\d+).(Hex(:?Hex)?2?)'))", { "ARRAY" : true, "0" : "$.(+@.value[2])", "1" : "$.(@.value[3] !== 'Hex'? 'HexHex' : 'Hex')"}],
+      "ambiguous_sites" : ["$[0].(match(@.modifications, '(:?(\\\\d+)-)(\\\\d+)\\\\((Hex(:?Hex)?)\\\\)'))", { "ARRAY" : true, "0" : { "ARRAY": true , "0": "$.(+@.value[1])", "1": "$.(+@.value[2])" }, "1" : "$.(@.value[3] !== 'Hex'? 'HexHex' : 'Hex')"}],
+      "composition" : "$[0].(@.composition)",
+      "source" : "$[0].(@.portion.toLowerCase()+'_cona_'+@.enzyme)"
+    },
+    "$.data[?(! @[0].any_sites)].acc" : {
+      "acc" : "$[0].acc",
+      "sequence" : "$[0].sequence",
+      "peptide_start" : "$[0].(+@.peptide_start)",
+      "peptide_end" : "$[0].(@.peptide_end)",
+      "sites" : [],
+      "ambiguous_sites" : [],
+      "composition" : "$[0].(@.composition)",
+      "source" : "$[0].(@.portion.toLowerCase()+'_cona_'+@.enzyme)"
+    }
+  },
+  "metadata": {
+    "msdata-version" : "1.2",
+    "title" : "Pombe",
+    "doi":"10.1073/pnas.1511743112",
+    "mimetype" : "application/json+msdata",
+    "sample": {
+        "tissue":"bto:0001489",
+        "species":4896
+    }
+  }
+},
+"preprocess" : {
+  "data" : {
+    "$[?(@.uniprot)].scan_id" : {
+      "scan_id" : "$.(clean(@.ambiguous_site_s)+clean(@.unambiguous_site_s) + clean(@.uniprot)+ @.peptide)",
+      "acc" : "$.(lastvalue(lookup(lastvalue(match(@.uniprot,'([A-Za-z0-9\\\\-]+)',0)),id_updates)))",
+      "portion" : "tcl",
+      "enzyme" : "try",
+      "sequence" : "$.(toupper(@.peptide))",
+      "peptide_start" : "$.(+@.peptide_start)",
+      "peptide_end" : "$.(+@.peptide_end)",
+      "any_sites" : "$.(@.ambiguous_site_s !== 'NA' || @.unambiguous_site_s)",
+      "modifications" : "$.(@.unambiguous_site_s+' '+match(@.ambiguous_site_s, '^(.+);?',0))",
+      "composition" : "$.(clean(@.composition))"
+    }
+  }
+},
+"environment" : {
+  "id_updates": {
+  },
+  "sequences" : {
+  }
+}
+}
