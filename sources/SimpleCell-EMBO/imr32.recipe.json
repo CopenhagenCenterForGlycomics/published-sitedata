@@ -40,6 +40,7 @@
       "gene" : "$.(clean(@.gene_name))",
       "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
       "sites" : [],
+      "ambiguous_sites" : [ "$.(repeat(@,+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',0)))", {"ARRAY" : true, "0" : {"ARRAY" : true, "0": "$.(+match(@.value.glycosites_with_ambiguous_assignment,'(\\\\d+)',1))","1": "$.(+match(@.value.glycosites_with_ambiguous_assignment,'(\\\\d+)',2))" }, "1" : "HexNAc" }],
       "peptide_start" : "$.(+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',1))",
       "peptide_end" : "$.(+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',2))",
       "source" : "tcl_vva_try",
@@ -49,6 +50,7 @@
       "gene" : "$.(clean(@.gene_name))",
       "acc" : "$.(lookup(clean(@.gene_name),protein_names))",
       "sites" : [],
+      "ambiguous_sites" : [ "$.(repeat(@,+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',0)))", {"ARRAY" : true, "0" : {"ARRAY" : true, "0": "$.(+match(@.value.glycosites_with_ambiguous_assignment,'(\\\\d+)',1))","1": "$.(+match(@.value.glycosites_with_ambiguous_assignment,'(\\\\d+)',2))" }, "1" : "HexNAc" }],
       "peptide_start" : "$.(+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',1))",
       "peptide_end" : "$.(+match(@.glycosites_with_ambiguous_assignment,'(\\\\d+)',2))",
       "source" : "sec_vva_try",
@@ -56,7 +58,7 @@
     }
   },
   "metadata": {
-    "msdata-version" : "1.2",
+    "msdata-version" : "1.3",
     "title" : "IMR32 Glycoproteome",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",

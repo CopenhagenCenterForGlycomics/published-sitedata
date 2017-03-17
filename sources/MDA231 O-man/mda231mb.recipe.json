@@ -19,14 +19,14 @@
       "sites" : [],
       "peptide_start" : "$.(+match(@.protein_sequence,'(\\\\d+)',0))",
       "peptide_end" : "$.(+match(@.protein_sequence,'(\\\\d+)',1))",
-      "ambiguous_mods" : "$.(paste(match(@.partially_defined_sites,'(\\\\d+)',0),'-',match(@.partially_defined_sites,'(\\\\d+)',1),'(',match(@.glycan_s,'(\\\\d+)',0) || 1,'xHex)'))",
+      "ambiguous_sites" : [ "$.(repeat(@,+(match(@.glycan_s,'(\\\\d+)',0) || 1)))", {"ARRAY" : true, "0" : {"ARRAY" : true, "0": "$.(+match(@.value.partially_defined_sites,'(\\\\d+)',0))","1": "$.(+match(@.value.partially_defined_sites,'(\\\\d+)',1))" }, "1" : "Hex" }],
       "peptide_end" : "$.(+match(@.partially_defined_sites,'(\\\\d+)',1))",
       "source" : "tcl_vva_try",
       "composition" : ["$.(paste(match(@.glycan_s,'(\\\\d+)',0) || 1,'xHex'))"]
     }
   },
   "metadata": {
-    "msdata-version" : "1.2",
+    "msdata-version" : "1.3",
     "title" : "MDA-MB-231 O-Man Glycoproteome",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1073/pnas.1313446110",

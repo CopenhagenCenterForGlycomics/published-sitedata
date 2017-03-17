@@ -16,10 +16,10 @@
 		"quant" : { "quant": "$.(0.000001)" , "channels" : "K:C" }
 	},
 	"$.data[?(@.uniprot && @.quant == 'pos ∞')].uniprot" : {
-        "uniprot" : "$.uniprot",
-        "site" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
-        "quant" : { "quant": "$.(100000)" , "channels" : "K:C" }
-    },
+    "uniprot" : "$.uniprot",
+    "sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
+    "quant" : { "quant": "$.(100000)" , "channels" : "K:C" }
+  },
 	"$.data[?(@.uniprot && @.quant == 'not found')].uniprot" : {
 		"uniprot" : "$.uniprot",
 		"sites" : [ "$.(match( @.site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "Phospho"} ],
