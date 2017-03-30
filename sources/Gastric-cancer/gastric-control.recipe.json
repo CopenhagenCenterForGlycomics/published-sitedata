@@ -18,7 +18,7 @@
     "mimetype" : "application/json+msdata",
     "doi" : "10.1074/mcp.M114.046862",
     "sample": {
-        "tissue":"bto:0000131",
+        "tissue":"bto:0000133",
         "species":9606
     }
   }
