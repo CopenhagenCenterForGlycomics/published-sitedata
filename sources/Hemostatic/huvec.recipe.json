@@ -20,7 +20,9 @@
     "doi" : "10.1182/bloodadvances.2016002121",
     "sample": {
         "tissue" : "bto:0001949",
-        "species":9606
+        "species":9606,
+        "cell_type":"HUVEC-C",
+        "cell_type_id":"RRID:CVCL_2959"
     }
   }
 },
