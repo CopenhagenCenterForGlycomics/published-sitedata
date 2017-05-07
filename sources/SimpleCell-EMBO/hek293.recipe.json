@@ -89,8 +89,8 @@
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
     "sample": {
-        "cell_type_id":"RRID:CVCL_S025",
-        "cell_type":"HEK293 SC",
+        "cell_type_id":"RRID:CVCL_0045",
+        "cell_type":"HEK293",
         "ko":["entrez:29071"],
         "tissue":"bto:0000007",
         "species":9606

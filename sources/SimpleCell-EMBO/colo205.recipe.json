@@ -64,8 +64,8 @@
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
     "sample": {
-        "cell_type_id":"RRID:CVCL_S023",
-        "cell_type":"COLO 205 SC",
+        "cell_type_id":"RRID:CVCL_0218",
+        "cell_type":"COLO 205",
         "ko":["entrez:29071"],
         "tissue":"bto:0000179",
         "species":9606

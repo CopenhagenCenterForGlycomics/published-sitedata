@@ -59,12 +59,12 @@
   },
   "metadata": {
     "msdata-version" : "1.3",
-    "title" : "T47D Glycoproteome",
+    "title" : "T-47D Glycoproteome",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
     "sample": {
-        "cell_type_id":"RRID:CVCL_S034",
-        "cell_type":"T47D SC",
+        "cell_type_id":"RRID:CVCL_0553",
+        "cell_type":"T-47D",
         "ko":["entrez:29071"],
         "tissue":"bto:0000007",
         "species":9606

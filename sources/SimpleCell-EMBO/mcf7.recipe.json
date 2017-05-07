@@ -63,8 +63,8 @@
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
     "sample": {
-        "cell_type_id":"RRID:CVCL_S030",
-        "cell_type":"MCF-7 SC",
+        "cell_type_id":"RRID:CVCL_0031",
+        "cell_type":"MCF-7",
         "ko":["entrez:29071"],
         "tissue":"bto:0000093",
         "species":9606

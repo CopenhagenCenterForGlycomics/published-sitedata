@@ -59,12 +59,12 @@
   },
   "metadata": {
     "msdata-version" : "1.3",
-    "title" : "IMR32 Glycoproteome",
+    "title" : "IMR-32 Glycoproteome",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
     "sample": {
-        "cell_type_id":"RRID:CVCL_S028",
-        "cell_type":"IMR32 SC",
+        "cell_type_id":"RRID:CVCL_0346",
+        "cell_type":"IMR-32",
         "ko":["entrez:29071"],
         "tissue":"bto:0000934",
         "species":9606

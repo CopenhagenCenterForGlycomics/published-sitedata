@@ -61,8 +61,8 @@
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
     "sample": {
-        "cell_type_id":"RRID:CVCL_S031",
-        "cell_type":"MDA-MB-231 SC",
+        "cell_type_id":"RRID:CVCL_0062",
+        "cell_type":"MDA-MB-231",
         "ko":["entrez:29071"],
         "tissue":"bto:0000815",
         "species":9606

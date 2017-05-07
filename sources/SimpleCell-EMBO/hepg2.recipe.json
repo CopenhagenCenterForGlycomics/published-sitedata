@@ -59,12 +59,12 @@
   },
   "metadata": {
     "msdata-version" : "1.3",
-    "title" : "HepG2 Glycoproteome",
+    "title" : "Hep-G2 Glycoproteome",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1038/emboj.2013.79",
     "sample": {
-        "cell_type_id":"RRID:CVCL_S027",
-        "cell_type":"HepG2 SC",
+        "cell_type_id":"RRID:CVCL_0027",
+        "cell_type":"Hep-G2",
         "ko":["entrez:29071"],
         "tissue":"bto:0000599",
         "species":9606
