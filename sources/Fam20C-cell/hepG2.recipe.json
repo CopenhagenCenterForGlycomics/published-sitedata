@@ -39,7 +39,7 @@
     },
     "sample": {
         "cell_type_id":"RRID:CVCL_0027",
-        "cell_type":"HepG2",
+        "cell_type":"Hep-G2",
         "Kd":["entrez:56975"],
         "tissue":"bto:0000599",
         "species":9606
