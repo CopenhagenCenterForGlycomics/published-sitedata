@@ -9,42 +9,42 @@
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "tcl_vva_try",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycosites_defined && @.ags_sec_try)].acc" : {
       "gene" : "$.(clean(@.gene))",
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "sec_vva_try",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycosites_defined && @.ags_sec_chy_try)].acc" : {
       "gene" : "$.(clean(@.gene))",
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "sec_vva_chy",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycosites_defined && @.ags_tcl_chy_try)].acc" : {
       "gene" : "$.(clean(@.gene))",
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "tcl_vva_chy",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycosites_defined && @.ags_sec_glu_c)].acc" : {
       "gene" : "$.(clean(@.gene))",
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "sec_vva_gluc",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     },
     "$[?(@.glycosites_defined && @.ags_tcl_glu_c)].acc" : {
       "gene" : "$.(clean(@.gene))",
       "acc" : "$.(lookup(clean(@.gene),protein_names))",
       "sites" : ["$.(array(+match(@.glycosites_defined,'\\:.(\\\\d+)',0),'HexNAc'))"],
       "source" : "tcl_vva_gluc",
-      "composition" : [["1xHexNAc"]]
+      "composition" : ["1xHexNAc"]
     }
   },
   "metadata": {
