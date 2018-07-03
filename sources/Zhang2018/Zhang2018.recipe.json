@@ -1,0 +1,28 @@
+{
+"sources" : {
+  "files" : ["1-s2.0-S1874391917303305-mmc4.xlsx:0#2"]
+},
+"template" : {
+  "data" : {
+    "$[?(@.accession && @.gene_name )].acc" : {
+      "acc" : "@.accession",
+      "sites" : [ "$.(match( @.o_glycosylation_site, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "HexNAc"} ]
+    }
+  },
+  "metadata": {
+    "msdata-version" : "1.3",
+    "title" : "O-GalNAc human serum proteome Zhang2018",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1016/j.jprot.2017.09.014",
+    "sample": {
+        "tissue" : "bto:0000131",
+        "species":9606
+    }
+  }
+
+},
+"environment" : {
+  "sequences":{
+  }
+}
+}

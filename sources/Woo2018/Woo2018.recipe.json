@@ -1,0 +1,38 @@
+{
+"sources" : {
+  "files" : ["4875_2_supp_42104_p1w260.xlsx:0#3"]
+},
+"template" : {
+  "data" : {
+    "$.data[*].acc" : {
+      "acc" : "$[0].acc",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "sites" : "$[0].sites"
+    }
+  },
+  "metadata": {
+    "msdata-version" : "1.3",
+    "title" : "O-GalNAc T-Cells Woo2018",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1074/mcp.RA117.000261",
+    "sample": {
+        "tissue" : "bto:0000782",
+        "species":9606
+    }
+  }
+},
+"preprocess" : {
+  "data" : {
+    "$[?(@.uni_prot_accession)].identifier" : {
+      "identifier" : "$.(@.peptide_sequence+@.glyco_site_s_protein)",
+      "acc" : "@.uni_prot_accession",
+      "peptide_start" : "$.(+@.peptide_position_in_protein)",
+      "peptide_end" : "$.(@.peptide_sequence.length - 1 +@.peptide_position_in_protein)",
+      "sites" : [ "$.(match( @.glyco_site_s_protein, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "HexNAc"} ]
+    }
+  }
+},
+"environment" : {
+}
+}
