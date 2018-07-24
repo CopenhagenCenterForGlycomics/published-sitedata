@@ -13,7 +13,7 @@
   },
   "metadata": {
     "msdata-version" : "1.3",
-    "title" : "O-GalNAc T-Cells Woo2018",
+    "title" : "O-GlcNAc T-Cells Woo2018",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1074/mcp.RA117.000261",
     "sample": {
@@ -29,7 +29,7 @@
       "acc" : "@.uni_prot_accession",
       "peptide_start" : "$.(+@.peptide_position_in_protein)",
       "peptide_end" : "$.(@.peptide_sequence.length - 1 +@.peptide_position_in_protein)",
-      "sites" : [ "$.(match( @.glyco_site_s_protein, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "HexNAc"} ]
+      "sites" : [ "$.(match( @.glyco_site_s_protein, '(\\\\d+)'))" , {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "GlcNAc"} ]
     }
   }
 },
