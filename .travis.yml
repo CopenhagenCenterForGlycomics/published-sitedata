@@ -21,7 +21,7 @@ deploy:
     acl: private
     on:
       branch: master
-      repo: hirenj/published-sitedata
+      repo: CopenhagenCenterForGlycomics/published-sitedata
   - provider: s3
     access_key_id: AKIAJFGWGCZTSVH6R36Q
     skip_cleanup: true
@@ -34,4 +34,4 @@ deploy:
     acl: private
     on:
       branch: master
-      repo: hirenj/published-sitedata
+      repo: CopenhagenCenterForGlycomics/published-sitedata
