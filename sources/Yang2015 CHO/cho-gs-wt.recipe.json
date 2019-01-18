@@ -26,55 +26,61 @@
     "$.data[?(! @[0].composition_cid_t && @[0].activation == 'CID')].acc" : {
       "acc" : "$[0].acc",
       "sites" : "$[0].sites",
-      "peptide" : "$[0].peptide",
+      "sequence" : "$[0].peptide",
       "peptide_start" : "$[0].peptide_start",
       "peptide_end" : "$[0].peptide_end",
       "source" : "$[0].source",
+      "activation": ["$[0].activation"],
       "composition" : ["$[0].(@.composition_cid_tn+'xHexNAc')"]
     },
     "$.data[?(! @[0].composition_cid_tn && @[0].activation == 'CID')].acc" : {
       "acc" : "$[0].acc",
       "sites" : "$[0].sites",
-      "peptide" : "$[0].peptide",
+      "sequence" : "$[0].peptide",
       "peptide_start" : "$[0].peptide_start",
       "peptide_end" : "$[0].peptide_end",
       "source" : "$[0].source",
+      "activation": ["$[0].activation"],
       "composition" : ["$[0].(@.composition_cid_t+'xHexHexNAc')"]
     },
     "$.data[?(@[0].composition_cid_t && @[0].composition_cid_tn && @[0].activation == 'CID')].acc" : {
       "acc" : "$[0].acc",
       "sites" : "$[0].sites",
-      "peptide" : "$[0].peptide",
+      "sequence" : "$[0].peptide",
       "peptide_start" : "$[0].peptide_start",
       "peptide_end" : "$[0].peptide_end",
       "source" : "$[0].source",
+      "activation": ["$[0].activation"],
       "composition" : ["$[0].(@.composition_cid_tn+'xHexNAc'+@.composition_cid_t+'xHexHexNAc')"]
     },
     "$.data[?(! @[0].composition_etd_t && @[0].activation == 'ETD')].acc" : {
       "acc" : "$[0].acc",
       "sites" : "$[0].sites",
-      "peptide" : "$[0].peptide",
+      "sequence" : "$[0].peptide",
       "peptide_start" : "$[0].peptide_start",
       "peptide_end" : "$[0].peptide_end",
       "source" : "$[0].source",
+      "activation": ["$[0].activation"],
       "composition" : ["$[0].(@.composition_etd_tn+'xHexNAc')"]
     },
     "$.data[?(! @[0].composition_etd_tn && @[0].activation == 'ETD')].acc" : {
       "acc" : "$[0].acc",
       "sites" : "$[0].sites",
-      "peptide" : "$[0].peptide",
+      "sequence" : "$[0].peptide",
       "peptide_start" : "$[0].peptide_start",
       "peptide_end" : "$[0].peptide_end",
       "source" : "$[0].source",
+      "activation": ["$[0].activation"],
       "composition" : ["$[0].(@.composition_etd_t+'xHexHexNAc')"]
     },
     "$.data[?(@[0].composition_etd_t && @[0].composition_etd_tn && @[0].activation == 'ETD')].acc" : {
       "acc" : "$[0].acc",
       "sites" : "$[0].sites",
-      "peptide" : "$[0].peptide",
+      "sequence" : "$[0].peptide",
       "peptide_start" : "$[0].peptide_start",
       "peptide_end" : "$[0].peptide_end",
       "source" : "$[0].source",
+      "activation": ["$[0].activation"],
       "composition" : ["$[0].(@.composition_etd_tn+'xHexNAc'+@.composition_etd_t+'xHexHexNAc')"]
     }
   },
