@@ -8,6 +8,7 @@
     "$[?(@.sequence && @.unambiguous_etd)].acc" : {
       "acc" : "$.accessions",
       "sites" : ["$.(sum(match(@.unambiguous_etd,'(\\\\d+)'),+@.n-1))", {"ARRAY" : true, "0" : "$.(+@.value)", "1" : "HexNAc"} ],
+      "peptide" : "$.sequence",
       "peptide_start" : "$.n",
       "peptide_end" : "$.c",
       "source" : "$.(match(@.spectrum_file,'((?:sec|TCL)_[^_]+)',0).toLowerCase())",
