@@ -9,7 +9,7 @@
       "sequence" : "$[0].sequence",
       "peptide_start" : "$[0].(+@.peptide_start)",
       "peptide_end" : "$[0].(@.peptide_start+@.sequence.length-1)",
-      "composition" : "$[0].(join(match(@.composition,'(\\\\dx[^;]+)'),';'))",
+      "composition" : "$[0].(join(match(@.composition,'(\\\\dx[^;]+)'),''))",
       "sites" : []
     }
   },
