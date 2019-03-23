@@ -14,11 +14,13 @@
   },
   "metadata": {
     "msdata-version" : "1.3",
-    "title" : "O-GlcNAc T-Cells Woo2018",
+    "title" : "PC-3 IsoTaG Woo2017",
     "mimetype" : "application/json+msdata",
-    "doi" : "10.1074/mcp.RA117.000261",
+    "doi" : "10.1007/s00216-016-9934-9",
     "sample": {
-        "tissue" : "bto:0000782",
+        "cell_type_id":"RRID:CVCL_0035",
+        "cell_type":"PC-3",
+        "tissue":"bto:0001061",
         "species":9606
     }
   }
@@ -27,7 +29,7 @@
   "data" : {
     "$[?(@.protein_group_accessions)].identifier" : {
       "identifier" : "$.(@.sequence+@.log_prob)",
-      "acc" : "@.protein_group_accessions",
+      "acc" : "$.(join(match(@.protein_group_accessions,'([OPQ][0-9][A-Z0-9]{3}[0-9])'),';'))",
       "peptide_start" : "$.(+@.position_in_protein)",
       "peptide_end" : "$.(@.sequence.length - 1 +@.position_in_protein)",
       "sites" : [ "$.(sum(match( @.modifications, '[NST](\\\\d+)\\\\({([^ }]*)[^}]*}\\\\)'),+@.position_in_protein-1))" , {"ARRAY" : true, "0" : "$.(+@.value[0])", "1" : "$.(lookup(@.value[1],compositions))"} ],
