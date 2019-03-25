@@ -10,7 +10,7 @@
       "peptide_end" : "$[0].peptide_end",
       "sequence" : "$[0].sequence",
       "sites" : "$[0].sites",
-      "composition" : "$[0].(join(@.composition,';'))"
+      "composition" : [ "$[0].(join(@.composition,';'))" ]
     }
   },
   "metadata": {

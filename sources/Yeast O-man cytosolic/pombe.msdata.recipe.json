@@ -11,7 +11,7 @@
       "peptide_end" : "$[0].(@.peptide_end)",
       "sites" : ["$[0].(match(@.modifications, '(:?(:?^|[ ,;]))(\\\\d+).(Hex(:?Hex)?2?)'))", { "ARRAY" : true, "0" : "$.(+@.value[2])", "1" : "$.(@.value[3] !== 'Hex'? 'HexHex' : 'Hex')"}],
       "ambiguous_sites" : ["$[0].(match(@.modifications, '(:?(\\\\d+)-)(\\\\d+)\\\\((Hex(:?Hex)?)\\\\)'))", { "ARRAY" : true, "0" : { "ARRAY": true , "0": "$.(+@.value[1])", "1": "$.(+@.value[2])" }, "1" : "$.(@.value[3] !== 'Hex'? 'HexHex' : 'Hex')"}],
-      "composition" : "$[0].(@.composition)",
+      "composition" : [ "$[0].(@.composition)" ],
       "source" : "$[0].(@.portion.toLowerCase()+'_cona_'+@.enzyme)"
     },
     "$.data[?(! @[0].any_sites)].acc" : {
@@ -21,7 +21,7 @@
       "peptide_end" : "$[0].(@.peptide_end)",
       "sites" : [],
       "ambiguous_sites" : [],
-      "composition" : "$[0].(@.composition)",
+      "composition" : [ "$[0].(@.composition)" ],
       "source" : "$[0].(@.portion.toLowerCase()+'_cona_'+@.enzyme)"
     }
   },
