@@ -27,15 +27,19 @@
 	}
 },
   "metadata": {
-    "msdata-version" : "1.3",
+    "msdata-version" : "1.4",
     "title" : "Fam20c Phosphoproteome Hep-G2",
     "mimetype" : "application/json+msdata",
     "doi" : "10.1016/j.cell.2015.05.028",
     "quantitation" : {
       "channels" : {
-        "K" : "Kd",
-        "C" : "Ctrl"
+        "K" : "kd",
+        "C" : "ctrl"
       }
+    },
+    "channel_samples": {
+      "kd": {"perturbation-ko": {"ARRAY": true, "0":{"entrez": 56975,"symbol": "FAM20C"}},"perturbation-ki": [],"perturbation-wt": [],"perturbation-other": []},
+      "ctrl": {"perturbation-ko": [],"perturbation-ki": [],"perturbation-wt": [],"perturbation-other": []}
     },
     "sample": {
         "cell_type_id":"RRID:CVCL_0027",
