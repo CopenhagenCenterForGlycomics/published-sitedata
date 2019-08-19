@@ -1,0 +1,25 @@
+{
+"sources" : {
+  "files" : ["NIHMS612180-supplement-02.xlsx:1"]
+},
+"preprocess" : { "data": { "$[?(@.accepted)].uniprot" : {"uniprot": "$.leading_proteins", "site": "$.(match(@.positions_within_proteins,'([0-9]+)',0))" } }},
+"template": { "data" : {
+  "$.data[*].uniprot" : {
+    "uniprot" : "$[0].uniprot",
+    "sites" : [ "$[*]", {"ARRAY" : true, "0" : "$.(+@.site)", "1" : "Phospho"} ]
+  }
+},
+  "metadata": {
+    "msdata-version" : "1.4",
+    "title" : "Bordoli2014 VLK substrates",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1016/j.cell.2014.06.048",
+    "sample": {
+        "tissue":"bto:0001336",
+        "species":9606,
+        "ki" : ["entrez:91461"]
+    }
+  }
+},
+"environment" : {}
+}
