@@ -1,0 +1,116 @@
+{
+"sources" : {
+  "files" : ["HSV_1.xlsx"]
+},
+"preprocess": { "data" : {
+  "$[?(@.modifications && @.activation_type == 'ETD')].tempid" : {
+    "tempid" : "$.(@.n+@.c+@.accession+@.xcorr+@.modifications+@.activation)",
+    "acc" : "$.accession",
+    "source": "$.fluid",
+    "peptide_start": "$.n",
+    "peptide_end": "$.c",
+    "peptide" : "$.sequence",
+    "activation" : "$.activation_type",
+    "source" : "tcl",
+    "composition_etd_t" : "$.((match(@.modifications, '(Hex1)').length))",
+    "composition_etd_tn" : "$.((match(@.modifications, '\\\\((HexNAc)').length))",
+    "sites" : ["$.(sum(match( @.modifications, '(\\\\d+)\\\\(([^ ;]*)\\\\)'),@.n - 1))", {"ARRAY" : true, "0" : "$.(+@.value[0])", "1" : "$.(lookup(@.value[1],compositions))"}]
+  },
+  "$[?(@.activation_type == 'HCD')].tempid" : {
+    "acc" : "$.accession",
+    "source": "$.fluid",
+    "peptide_start": "$.n",
+    "peptide_end": "$.c",
+    "peptide" : "$.sequence",
+    "activation" : "$.activation_type",
+    "source" : "tcl",
+    "composition_hcd_t" : "$.(+(match(@.modifications, '(\\\\d)x Hex1')[0] || {}).value)",
+    "composition_hcd_tn" : "$.(+(match(@.modifications, '(\\\\d)x HexNAc')[0] || {}).value)",
+    "sites" : []
+  }
+}
+},
+"template": {
+  "data": {
+    "$.data[?(! @[0].composition_hcd_t && @[0].activation == 'HCD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_hcd_tn+'xHexNAc')"]
+    },
+    "$.data[?(! @[0].composition_hcd_tn && @[0].activation == 'HCD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_hcd_t+'xHexHexNAc')"]
+    },
+    "$.data[?(@[0].composition_hcd_t && @[0].composition_hcd_tn && @[0].activation == 'HCD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_hcd_tn+'xHexNAc'+@.composition_hcd_t+'xHexHexNAc')"]
+    },
+    "$.data[?(! @[0].composition_etd_t && @[0].activation == 'ETD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_etd_tn+'xHexNAc')"]
+    },
+    "$.data[?(! @[0].composition_etd_tn && @[0].activation == 'ETD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_etd_t+'xHexHexNAc')"]
+    },
+    "$.data[?(@[0].composition_etd_t && @[0].composition_etd_tn && @[0].activation == 'ETD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_etd_tn+'xHexNAc'+@.composition_etd_t+'xHexHexNAc')"]
+    }
+  },
+  "metadata": {
+    "msdata-version" : "1.3",
+    "title" : "CHO-GS published WT glycoproteome",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1074/mcp.M114.041541",
+    "sample":{
+      "cell_type_id":"RRID:CVCL_H215",
+      "cell_type":"CHO-GS",
+      "tissue":"bto:0000457",
+      "ko":[],
+      "species":10029
+    }
+  }
+},
+"environment" : {
+  "compositions":{
+  "Hex1HexNAc1" : "HexHexNAc",
+  "HexNAc" : "HexNAc"
+  }
+}
+}
