@@ -1,6 +1,6 @@
 {
 	"sources" : {
-		"files":	["VZV clinical.msdata.json"]
+		"files":	["VZV_clinical.msdata.json"]
 	},
 	"template" : {
 	}

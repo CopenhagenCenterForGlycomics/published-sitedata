@@ -1,6 +1,6 @@
 {
 	"sources" : {
-		"files":	["HCMV infected.msdata.json"]
+		"files":	["HCMV_infected.msdata.json"]
 	},
 	"template" : {
 	}

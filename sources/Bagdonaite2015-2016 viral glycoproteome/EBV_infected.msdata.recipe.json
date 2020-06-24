@@ -1,6 +1,6 @@
 {
 	"sources" : {
-		"files":	["EBV infected.msdata.json"]
+		"files":	["EBV_infected.msdata.json"]
 	},
 	"template" : {
 	}
