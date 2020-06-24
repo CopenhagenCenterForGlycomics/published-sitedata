@@ -1,0 +1,110 @@
+{
+"sources" : {
+  "files" : ["HSV_1.xlsx"]
+},
+"preprocess": { "data" : {
+  "$[?(@.modifications && @.activation_type == 'ETD')].tempid" : {
+    "tempid" : "$.(@.n+@.c+@.accession+@.xcorr+@.modifications+@.activation)",
+    "acc" : "$.accession",
+    "source": "$.fluid",
+    "peptide_start": "$.n",
+    "peptide_end": "$.c",
+    "peptide" : "$.sequence",
+    "activation" : "$.activation_type",
+    "source" : "tcl",
+    "composition_etd_t" : "$.((match(@.modifications, '(Hex1)').length))",
+    "composition_etd_tn" : "$.((match(@.modifications, '\\\\((HexNAc)').length))",
+    "sites" : ["$.(sum(match( @.modifications, '(\\\\d+)\\\\(([^ ;]*)\\\\)'),@.n - 1))", {"ARRAY" : true, "0" : "$.(+@.value[0])", "1" : "$.(lookup(@.value[1],compositions))"}]
+  },
+  "$[?(@.activation_type == 'HCD')].tempid" : {
+    "acc" : "$.accession",
+    "source": "$.fluid",
+    "peptide_start": "$.n",
+    "peptide_end": "$.c",
+    "peptide" : "$.sequence",
+    "activation" : "$.activation_type",
+    "source" : "tcl",
+    "composition_hcd_t" : "$.(+(match(@.modifications, '(\\\\d)x Hex1')[0] || {}).value)",
+    "composition_hcd_tn" : "$.(+(match(@.modifications, '(\\\\d)x HexNAc')[0] || {}).value)",
+    "sites" : []
+  }
+}
+},
+"template": {
+  "data": {
+    "$.data[?(! @[0].composition_hcd_t && @[0].activation == 'HCD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_hcd_tn+'xHexNAc')"]
+    },
+    "$.data[?(! @[0].composition_hcd_tn && @[0].activation == 'HCD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_hcd_t+'xHexHexNAc')"]
+    },
+    "$.data[?(@[0].composition_hcd_t && @[0].composition_hcd_tn && @[0].activation == 'HCD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_hcd_tn+'xHexNAc'+@.composition_hcd_t+'xHexHexNAc')"]
+    },
+    "$.data[?(! @[0].composition_etd_t && @[0].activation == 'ETD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_etd_tn+'xHexNAc')"]
+    },
+    "$.data[?(! @[0].composition_etd_tn && @[0].activation == 'ETD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_etd_t+'xHexHexNAc')"]
+    },
+    "$.data[?(@[0].composition_etd_t && @[0].composition_etd_tn && @[0].activation == 'ETD')].acc" : {
+      "acc" : "$[0].acc",
+      "sites" : "$[0].sites",
+      "sequence" : "$[0].peptide",
+      "peptide_start" : "$[0].peptide_start",
+      "peptide_end" : "$[0].peptide_end",
+      "source" : "$[0].source",
+      "activation": ["$[0].activation"],
+      "composition" : ["$[0].(@.composition_etd_tn+'xHexNAc'+@.composition_etd_t+'xHexHexNAc')"]
+    }
+  },
+  "metadata": {
+    "msdata-version" : "1.4",
+    "title" : "HSV-1 glycoproteome from HELF",
+    "mimetype" : "application/json+msdata",
+    "doi" : "10.1371/journal.ppat.1004784",
+    "sample": {"species": 9606,"tissue": "bto:0003034","cell_type": "HELF","cell_type_id": "RRID:undefined","wt": [],"perturbation-other": "HSV-1 infection"}
+  }
+},
+"environment" : {
+  "compositions":{
+  "Hex1HexNAc1" : "HexHexNAc",
+  "HexNAc" : "HexNAc"
+  }
+}
+}
