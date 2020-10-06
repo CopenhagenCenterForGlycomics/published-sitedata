@@ -25,7 +25,7 @@
       "peptide_end" : "$[0].(@.peptide_start + clean(@.sequence,'A-Z').length - 1)",
       "composition" : [ "$[0].(paste(match(@.modifications,'Hex').length,'xHex'))" ],
       "quant" : "$[0].quant",
-      "activation" : "$[0].activation"
+      "activation" : [ "$[0].activation" ]
     }
   },
   "metadata": {
