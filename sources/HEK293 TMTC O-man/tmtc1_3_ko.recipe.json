@@ -11,7 +11,7 @@
       "activation": "@.activation_type",
       "peptide_start" : "$.((lookup(@.protein_group_accessions,sequences) || '').indexOf(toupper(@.sequence))+1)",
       "sequence" : "$.(toupper(@.sequence))",
-      "quant" : {"quant": "$.(+@.ratio_control_tmtc1_4_ko)", "channels": "M:L" }
+      "quant" : {"quant": "$.(+@.ratio_control_tmtc1_3_ko)", "channels": "M:L" }
     }
   }
 },
