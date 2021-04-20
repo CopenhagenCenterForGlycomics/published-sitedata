@@ -1,0 +1,7 @@
+{
+	"sources" : {
+		"files":	["SARS_CoV-2.rbd.msdata.json"]
+	},
+	"template" : {
+	}
+}

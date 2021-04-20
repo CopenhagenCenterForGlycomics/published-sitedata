@@ -1,0 +1,12 @@
+{
+  "data": {
+    "P0DTC2": [{"sites":[[315,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[323,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[333,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[345,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[415,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[523,"HexNAc"]],"composition": ["HexNAc"]}]
+  },
+  "metadata": {
+    "msdata-version": "1.4",
+    "mimetype": "application/json+msdata",
+    "doi":"10.3390/v13040551",
+    "sample": {"species": 9606},
+    "title": "SARS-CoV-2 Spike RBD"
+  }
+}
