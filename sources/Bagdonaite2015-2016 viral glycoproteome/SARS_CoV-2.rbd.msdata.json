@@ -1,6 +1,6 @@
 {
   "data": {
-    "P0DTC2": [{"sites":[[315,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[323,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[333,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[345,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[415,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[523,"HexNAc"]],"composition": ["HexNAc"]}]
+    "P0DTC2": [{"sites":[[315,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[323,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[323,"HexHexNAc"]],"composition": ["HexHexNAc"]},{"sites":[[333,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[345,"HexNAc"]],"composition": ["HexNAc"]},{"sites":[[415,"HexHexNAc"]],"composition": ["HexHexNAc"]},{"sites":[[523,"HexNAc"]],"composition": ["HexNAc"]}]
   },
   "metadata": {
     "msdata-version": "1.4",
