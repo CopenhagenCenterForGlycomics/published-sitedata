@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-- '8'
+- '12'
 script:
 - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run test:pullrequest; fi
 - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then rm -rf output; ( for dir in sources/*; do node bin/run_recipe --input "$dir" --silent; if [ $? -ne 0 ]; then exit 1; fi done ) fi
