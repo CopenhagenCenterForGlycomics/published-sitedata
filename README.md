@@ -11,3 +11,9 @@ should be infrequent.
 ## TODO
 
 Create cloudformation template for buckets / users
+
+
+## Manually running
+```
+for dir in sources/*; do runrecipe --input "$dir" --silent --nomangle; done
+```
