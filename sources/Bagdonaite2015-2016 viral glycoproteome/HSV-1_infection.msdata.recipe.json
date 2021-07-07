@@ -4,7 +4,7 @@
 },
 "preprocess": { "data" : {
   "$[?(@.modifications && @.activation_type == 'ETD')].tempid" : {
-    "tempid" : "$.(@.n+@.c+@.accession+@.xcorr+@.modifications+@.activation)",
+    "tempid" : "$.(@.n+@.c+@.accession+@.x_corr+@.modifications+@.activation)",
     "acc" : "$.accession",
     "source": "$.fluid",
     "peptide_start": "$.n",
@@ -17,6 +17,7 @@
     "sites" : ["$.(sum(match( @.modifications, '(\\\\d+)\\\\(([^ ;]*)\\\\)'),@.n - 1))", {"ARRAY" : true, "0" : "$.(+@.value[0])", "1" : "$.(lookup(@.value[1],compositions))"}]
   },
   "$[?(@.activation_type == 'HCD')].tempid" : {
+    "tempid" : "$.(@.n+@.c+@.accession+@.x_corr+@.modifications+@.activation)",
     "acc" : "$.accession",
     "source": "$.fluid",
     "peptide_start": "$.n",
